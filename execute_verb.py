@@ -40,3 +40,13 @@ def execute_go(user_input, world_state):
 	return world_state
 	
 	
+def execute_user_input(user_input, world_state):
+	verb = user_input[0]
+	verbs = ["go"]
+	if verb in verbs:
+		verb_found = verb
+	
+	if verb_found == "go":
+		return execute_go(user_input, world_state)
+	
+	
