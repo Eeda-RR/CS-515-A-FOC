@@ -44,10 +44,20 @@ def execute_look(user_input, world_state):
 	world_state.print_current_room()
 	return world_state
 
+
+def execute_inventory(user_input, world_state):
+	if len(world_state.inventory) == 0:
+		print("You're not carrying anything.")
+		return world_state
+	print("Inventory:")
+	for i in range(0,len(world_state.inventory),1):
+		print("  " + world_state.inventory[i])
+	return world_state
+
 	
 def execute_user_input(user_input, world_state):
 	verb = user_input[0]
-	verbs = ["go", "look"]
+	verbs = ["go", "look", "inventory"]
 	if verb in verbs:
 		verb_found = verb
 	
@@ -55,3 +65,5 @@ def execute_user_input(user_input, world_state):
 		return execute_go(user_input, world_state)
 	elif verb_found == "look":
 		return execute_look(user_input, world_state)
+	elif verb_found == "inventory":
+		return execute_inventory(user_input, world_state)
