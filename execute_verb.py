@@ -1,7 +1,7 @@
 from utils import sanitize_string
 
 def get_matched_exit(user_input_exit, current_room_exits):
-    if user_input_exit in current_room_exits:
+	if user_input_exit in current_room_exits:
 		return user_input_exit
 	filtered_exits = list(filter(lambda word: sanitize_string(word).startswith(user_input_exit), current_room_exits))
 	if len(filtered_exits) == 1:
@@ -48,6 +48,5 @@ def execute_user_input(user_input, world_state):
 	
 	if verb_found == "go":
 		return execute_go(user_input, world_state)
-	
 	
 	
