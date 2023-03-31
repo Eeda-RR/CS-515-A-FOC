@@ -10,7 +10,7 @@ def get_matched_exit(user_input_exit, current_room_exits):
 		output_str = "Did you want to go "
 		for i in range(0,len(filtered_exits),1):
 			output_str += " " + filtered_exits[i]
-		output_str += "?
+		output_str += "?"
 		print(output_str)
 		return 0
 	return -1
@@ -38,15 +38,20 @@ def execute_go(user_input, world_state):
 	world_state.current_room_index = exit_room_index
 	world_state.print_current_room()
 	return world_state
-	
+
+
+def execute_look(user_input, world_state):
+	world_state.print_current_room()
+	return world_state
+
 	
 def execute_user_input(user_input, world_state):
 	verb = user_input[0]
-	verbs = ["go"]
+	verbs = ["go", "look"]
 	if verb in verbs:
 		verb_found = verb
 	
 	if verb_found == "go":
 		return execute_go(user_input, world_state)
-	
-	
+	elif verb_found == "look":
+		return execute_look(user_input, world_state)
