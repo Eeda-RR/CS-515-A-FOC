@@ -1,22 +1,21 @@
 import sys
-import json 
+import json
 
 from utils import validate_game_map, sanitize_user_input
 from world_state import WorldState
 from execute_verb import execute_user_input
 
 def main():
-	fileName = sys.argv[1]
-	f = open(fileName, "r")
-	content = f.read()
-	game_map = json.loads(content)
-	if not validate_game_map(game_map):
-		print("Provided mapfile is not valid")
-		return
-	
-	world_state = WorldState(0, [], game_map)
-	world_state.print_current_room()
-	is_game_quit = False
+    fileName = sys.argv[1]
+    f = open(fileName,"r")
+    content = f.read()
+    game_map = json.loads(content)
+    if not validate_game_map(game_map):
+        print("Provided mapfile is not valid")
+
+    world_state = WorldState(0,[],game_map)
+    world_state.print_current_room()
+    is_game_quit = False
 
     while not is_game_quit:
         try:
@@ -30,6 +29,7 @@ def main():
         except EOFError:
             print("\nUse 'quit' to exit.")
 
-			
+
 if __name__=="__main__":
-	main()
+    main()
+    
