@@ -177,7 +177,7 @@ def execute_help(verbs, world_state):
 	
 def execute_user_input(user_input, world_state):
 	verb = user_input[0]
-	verbs = {"go" : 1, "get" : 1, "look" : 0, "inventory" : 0, "quit" : 0, "help" : 0}
+	verbs = {"go" : 1, "drop" : 1, "get" : 1, "look" : 0, "inventory" : 0, "quit" : 0, "help" : 0}	
 	if verb in verbs:
 		verb_found = verb
 	
@@ -193,4 +193,6 @@ def execute_user_input(user_input, world_state):
 		return execute_quit(user_input, world_state)
 	elif verb_found == "help":
 		return execute_help(verbs, world_state)
+	elif verb_found == "drop":
+		return execute_drop(user_input, world_state)
 	
