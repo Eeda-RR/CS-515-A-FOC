@@ -26,7 +26,7 @@ def execute_go(user_input, world_state):
 	
 	user_input_exit = user_input[1]
 	current_room_exits = world_state.room_map[world_state.current_room_index]["exits"]
-	directions_abbr = {"ne": "northeast", "nw": "northwest", "se": "southeast", "sw": "southwest", "n": "north", "e": "east", "w":"west", "s" : "south"}
+	directions_abbr = {"ne": "northeast", "nw": "northwest", "se": "southeast", "sw": "southwest"}
 	if user_input_exit in directions_abbr:
 		user_input_exit = directions_abbr[user_input_exit]
 	
