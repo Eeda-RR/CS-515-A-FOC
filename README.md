@@ -41,6 +41,7 @@
   I have chosen from the list of extensions provided within the problem statement itself.
   - Abbreviations for verbs, directions, and items
   - A help verb
-  - Directions become verbs
   - A drop verb
+  - Directions become verbs (Extra)
+  
   
