@@ -1,4 +1,5 @@
 from utils import sanitize_string
+import re
 
 def get_matched_exit(user_input_exit, current_room_exits):
 	if user_input_exit in current_room_exits:
