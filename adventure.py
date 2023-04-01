@@ -30,6 +30,5 @@ def main():
         except EOFError:
             print("\nUse 'quit' to exit.")
 
-
 if __name__=="__main__":
 	main()
