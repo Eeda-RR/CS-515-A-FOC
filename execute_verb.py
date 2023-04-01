@@ -117,6 +117,52 @@ def execute_quit(user_input, world_state):
     print("Goodbye!")
     return -1
 
+def get_matched_inv(user_input_item, current_inv):
+    if user_input_item in current_inv:
+        return user_input_item
+    filtered_items = list(filter(lambda word: re.search(user_input_item, sanitize_string(word)), current_inv))
+    if len(filtered_items) == 1:
+        return filtered_items[0]
+    elif len(filtered_items) > 1:
+        output_str = "Did you want to drop"
+        for i in range(0,len(filtered_items),1):
+            if i == 0:
+                output_str += " the"
+            elif i == len(filtered_items) - 1:
+                output_str += " or the"
+            else:
+                output_str += ","
+            output_str += " " + filtered_items[i]
+        output_str += "?"
+        print(output_str)
+        return 0
+    else:
+        return -1
+
+def execute_drop(user_input, world_state):
+    n = len(user_input)
+    if n == 1:
+        print("Sorry, you need to 'drop' something.")
+        return world_state
+  
+    user_input_item = user_input[1]
+    current_inv = world_state.inventory
+    matched_inv = get_matched_inv(user_input_item, current_inv)
+
+    if matched_inv == 0:
+        return world_state
+    elif matched_inv == -1:
+        print("There's no " + user_input_item + " anywhere.")
+        return world_state
+    else:
+        user_input_item = matched_inv
+  
+    print("You drop the " + user_input_item + ".")
+    world_state.room_map[world_state.current_room_index]["items"].append(user_input_item)
+    world_state.inventory.remove(user_input_item)
+    return world_state
+
+
 def execute_help(verbs, world_state):
     output = "You can run the following commands:"
     verbs_list = list(verbs.keys())
