@@ -46,11 +46,6 @@ def execute_go(user_input, world_state):
 	return world_state
 
 
-def execute_look(user_input, world_state):
-	world_state.print_current_room()
-	return world_state
-
-
 def execute_inventory(user_input, world_state):
 	if len(world_state.inventory) == 0:
 		print("You're not carrying anything.")
@@ -59,6 +54,15 @@ def execute_inventory(user_input, world_state):
 	for i in range(0,len(world_state.inventory),1):
 		print("  " + world_state.inventory[i])
 	return world_state
+
+
+
+def execute_look(user_input, world_state):
+	world_state.print_current_room()
+	return world_state
+
+
+
 
 def get_matched_item(user_input_item, current_room_items):
     if user_input_item in current_room_items:
@@ -113,10 +117,21 @@ def execute_quit(user_input, world_state):
     print("Goodbye!")
     return -1
 
+def execute_help(verbs, world_state):
+    output = "You can run the following commands:"
+    verbs_list = list(verbs.keys())
+    for i in range(0,len(verbs_list),1):
+        output += "\n  " + verbs_list[i]
+        if verbs[verbs_list[i]] == 1:
+            output += " ..."
+    print(output)
+    return world_state
+
+
 	
 def execute_user_input(user_input, world_state):
 	verb = user_input[0]
-	verbs = ["go", "look", "inventory","get","quit"]
+	verbs = {"go" : 1, "get" : 1, "look" : 0, "inventory" : 0, "quit" : 0, "help" : 0}
 	if verb in verbs:
 		verb_found = verb
 	
@@ -130,4 +145,6 @@ def execute_user_input(user_input, world_state):
 		return execute_get(user_input, world_state)
 	elif verb_found == "quit":
 		return execute_quit(user_input, world_state)
+	elif verb_found == "help":
+		return execute_help(verbs, world_state)
 	
