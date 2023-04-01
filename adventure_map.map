@@ -1,0 +1,93 @@
+[
+  {
+    "name": "A green room",
+    "desc": "You are in a simple room with green walls.",
+    "exits": {
+      "northeast" : 1,
+      "east" : 2,
+      "southeast" : 3,
+      "south" : 4,
+      "southwest" : 5,
+      "west" : 6,
+      "northwest": 7,
+      "north": 8
+    },
+    "items" : ["ballon","ballet"]
+  },
+  {
+    "name": "A blue room",
+    "desc": "This room is simple, too, but with blue walls.",
+    "exits": {
+      "south" : 2,
+      "southwest" : 0,
+      "west": 8
+    },
+    "items" : ["rose", "roller", "lily"]
+  },
+  {
+    "name": "A red room",
+    "desc": "You are in a fancy room, with bright red walls.",
+    "exits": {
+      "north" : 1,
+      "west": 0,
+      "south": 3
+    },
+    "items" : ["laptop"]
+  },
+  {
+    "name": "A yellow room",
+    "desc": "You are in a simple room, with pale yellow walls.",
+    "exits": {
+      "north" : 2,
+      "northwest": 0,
+      "west": 4
+    }
+  },
+  {
+    "name": "A purple room",
+    "desc": "You are in elegant room, with purple walls.",
+    "exits": {
+      "north" : 0,
+      "west": 5,
+      "east": 3
+    },
+    "items" : ["sword"]
+  },
+  {
+    "name": "A pastel green room",
+    "desc": "You are in a subtle room, with pastel green walls.",
+    "exits": {
+      "north" : 6,
+      "northeast": 0,
+      "east": 4
+    }
+  },
+  {
+    "name": "A magenta room",
+    "desc": "You are in a scary room, with magenta walls.",
+    "exits": {
+      "north" : 7,
+      "east": 0,
+      "south": 5
+    }
+  },
+  {
+    "name": "A burgundy room",
+    "desc": "You are in a simple room, with burgundy walls.",
+    "exits": {
+      "east" : 8,
+      "southeast": 0,
+      "south": 6
+    }
+  },
+  {
+    "name": "A game room",
+    "desc": "You are in a game room, with toys and video games.",
+    "exits": {
+      "west" : 7,
+      "south": 0,
+      "east": 1
+    },
+    "items" : ["PS5", "TEDDY  BEAR","HULA LOOP"]
+  }
+]
