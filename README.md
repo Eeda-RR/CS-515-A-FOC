@@ -42,6 +42,6 @@
   - Abbreviations for verbs, directions, and items
   - A help verb
   - A drop verb
-  - Directions become verbs (Extra)
+  - Directions become verbs 
   
   
