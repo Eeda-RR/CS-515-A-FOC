@@ -9,6 +9,8 @@ def get_matched_exit(user_input_exit, current_room_exits):
 	elif len(filtered_exits) > 1:
 		output_str = "Did you want to go "
 		for i in range(0,len(filtered_exits),1):
+			if i != 0:
+                output_str += " or"
 			output_str += " " + filtered_exits[i]
 		output_str += "?"
 		print(output_str)
@@ -23,6 +25,9 @@ def execute_go(user_input, world_state):
 	
 	user_input_exit = user_input[1]
 	current_room_exits = world_state.room_map[world_state.current_room_index]["exits"]
+	directions_abbr = {"ne": "northeast", "nw": "northwest", "se": "southeast", "sw": "southwest", "n": "north", "e": "east", "w":"west", "s" : "south"}
+	if user_input_exit in directions_abbr:
+		user_input_exit = directions_abbr[user_input_exit]
 	
 	matched_exit = get_matched_exit(user_input_exit, current_room_exits)
 	if matched_exit == 0:
