@@ -11,7 +11,7 @@ def get_matched_exit(user_input_exit, current_room_exits):
 		output_str = "Did you want to go "
 		for i in range(0,len(filtered_exits),1):
 			if i != 0:
-                output_str += " or"
+				output_str += " or"
 			output_str += " " + filtered_exits[i]
 		output_str += "?"
 		print(output_str)
@@ -26,7 +26,7 @@ def execute_go(user_input, world_state):
 	
 	user_input_exit = user_input[1]
 	current_room_exits = world_state.room_map[world_state.current_room_index]["exits"]
-	directions_abbr = {"ne": "northeast", "nw": "northwest", "se": "southeast", "sw": "southwest", "n": "north", "e": "east", "w":"west", "s" : "south"}
+	directions_abbr = {"ne": "northeast", "nw": "northwest", "se": "southeast", "sw": "southwest"}
 	if user_input_exit in directions_abbr:
 		user_input_exit = directions_abbr[user_input_exit]
 	
@@ -152,7 +152,7 @@ def execute_drop(user_input, world_state):
     if matched_inv == 0:
         return world_state
     elif matched_inv == -1:
-        print("There's no " + user_input_item + " anywhere.")
+        print("There's no " + user_input_item + " in the inventory.")
         return world_state
     else:
         user_input_item = matched_inv
@@ -180,6 +180,31 @@ def execute_user_input(user_input, world_state):
 	verbs = {"go" : 1, "drop" : 1, "get" : 1, "look" : 0, "inventory" : 0, "quit" : 0, "help" : 0}	
 	if verb in verbs:
 		verb_found = verb
+	else:
+		filtered_verbs = list(filter(lambda word: word.startswith(verb), list(verbs.keys())))
+		if len(filtered_verbs) == 1:
+			verb_found = filtered_verbs[0]
+		elif len(filtered_verbs) > 1:
+			output_str = "Do you want to"
+			for i in range(0,len(filtered_verbs),1):
+				if i != 0:
+					output_str += " or"
+				output_str += " " + filtered_verbs[i]
+			output_str += "?"
+			print(output_str)
+			return world_state
+		else:
+			directions = ["north" , "east", "west", "south", "northeast", "northwest", "southeast", "southwest"]
+			directions_abbr = {"ne": "northeast", "nw": "northwest", "se": "southeast", "sw": "southwest"}
+			if verb in directions:
+				verb_found = "go"
+				user_input = ["go", verb]
+			elif verb in directions_abbr:
+				verb_found = "go"
+				user_input = ["go", directions_abbr[verb]]
+			else:
+				verb_found = "go"
+				user_input = ["go", verb]
 	
 	if verb_found == "go":
 		return execute_go(user_input, world_state)
