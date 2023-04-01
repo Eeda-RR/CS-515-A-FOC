@@ -16,13 +16,19 @@ def main():
 	
 	world_state = WorldState(0, [], game_map)
 	world_state.print_current_room()
-	
-	while True:
-		action = input("What would you like to do? ")
-		action = sanitize_user_input(action)
-		action_output = execute_user_input(action, world_state)
-		if action_output != -1:
-			world_state = action_output
+	is_game_quit = False
+
+    while not is_game_quit:
+        try:
+            action = input("What would you like to do? ")
+            action = sanitize_user_input(action)
+            action_output = execute_user_input(action, world_state) 
+            if action_output != -1:
+                world_state = action_output
+            else :
+                is_game_quit = True
+        except EOFError:
+            print("\nUse 'quit' to exit.")
 
 
 if __name__=="__main__":

@@ -102,10 +102,15 @@ def execute_get(user_input, world_state):
     world_state.inventory.insert(0, user_input_item)
     return world_state
 
+
+def execute_quit(user_input, world_state):
+    print("Goodbye!")
+    return -1
+
 	
 def execute_user_input(user_input, world_state):
 	verb = user_input[0]
-	verbs = ["go", "look", "inventory","get"]
+	verbs = ["go", "look", "inventory","get","quit"]
 	if verb in verbs:
 		verb_found = verb
 	
@@ -117,3 +122,6 @@ def execute_user_input(user_input, world_state):
 		return execute_inventory(user_input, world_state)
 	elif verb_found == "get":
 		return execute_get(user_input, world_state)
+	elif verb_found == "quit":
+		return execute_quit(user_input, world_state)
+	
