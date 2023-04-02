@@ -34,8 +34,11 @@ def execute_go(user_input, world_state):
 	if matched_exit == 0:
 		return world_state
 	elif matched_exit == -1:
-		print("There's no way to go " + user_input_exit + ".")
-		return world_state
+	    dir_abbr = {"n":"north","s":"south","w":"west","e":"east"}
+	    if user_input_exit in dir_abbr:
+	        user_input_exit = dir_abbr[user_input_exit]
+	    print("There's no way to go " + user_input_exit + ".")
+	    return world_state
 	else:
 		user_input_exit = matched_exit
 	
@@ -65,7 +68,7 @@ def execute_look(user_input, world_state):
 
 
 def get_matched_item(user_input_item, current_room_items):
-    if user_input_item in current_room_items:
+    if user_input_item in list(map(lambda word: sanitize_string(word),current_room_items)):
         return user_input_item
     filtered_items = list(filter(lambda word: re.search(user_input_item, sanitize_string(word)), current_room_items))
     if len(filtered_items) == 1:
