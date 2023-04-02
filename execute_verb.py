@@ -2,7 +2,7 @@ from utils import sanitize_string
 import re
 
 def get_matched_exit(user_input_exit, current_room_exits):
-	if user_input_exit in current_room_exits:
+	if user_input_exit in list(map(lambda word: sanitize_string(word),current_room_exits)):
 		return user_input_exit
 	filtered_exits = list(filter(lambda word: sanitize_string(word).startswith(user_input_exit), current_room_exits))
 	if len(filtered_exits) == 1:
@@ -121,7 +121,7 @@ def execute_quit(user_input, world_state):
     return -1
 
 def get_matched_inv(user_input_item, current_inv):
-    if user_input_item in current_inv:
+    if user_input_item in list(map(lambda word: sanitize_string(word),current_inv)):
         return user_input_item
     filtered_items = list(filter(lambda word: re.search(user_input_item, sanitize_string(word)), current_inv))
     if len(filtered_items) == 1:
