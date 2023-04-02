@@ -48,7 +48,7 @@ def execute_go(user_input, world_state):
 
 def execute_inventory(user_input, world_state):
 	if len(world_state.inventory) == 0:
-		print("You're not carrying anything.")
+		print("You're not carring anything.")
 		return world_state
 	print("Inventory:")
 	for i in range(0,len(world_state.inventory),1):
