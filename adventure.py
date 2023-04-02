@@ -14,6 +14,7 @@ def main():
     if not validate_game_map(game_map):
         print("Provided mapfile is not valid")
         is_game_quit = True
+        raise Exception("Provided mapfile is not valid")
     else:
         world_state = WorldState(0,[],game_map)
         world_state.print_current_room()
