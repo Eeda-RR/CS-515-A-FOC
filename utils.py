@@ -2,6 +2,8 @@ import re
 
 def validate_game_map(game_map):
     num_of_rooms = len(game_map)
+    if num_of_rooms == 0:
+        return False
     for item in game_map:
         room = item
         room_fields = room.keys()

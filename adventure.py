@@ -11,13 +11,13 @@ def main():
     content = f.read()
     game_map = json.loads(content)
     is_game_quit = False
-    # if not validate_game_map(game_map):
-    #     print("Provided mapfile is not valid")
-    #     is_game_quit = True
-    #     raise Exception("Provided mapfile is not valid")
-    # else:
-    world_state = WorldState(0,[],game_map)
-    world_state.print_current_room()
+    if not validate_game_map(game_map):
+        print("Provided mapfile is not valid")
+        is_game_quit = True
+        raise Exception("Provided mapfile is not valid")
+    else:
+        world_state = WorldState(0,[],game_map)
+        world_state.print_current_room()
     
 
     while not is_game_quit:
