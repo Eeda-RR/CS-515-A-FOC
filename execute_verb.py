@@ -4,6 +4,11 @@ import re
 def get_matched_exit(user_input_exit, current_room_exits):
 	if user_input_exit in list(map(lambda word: sanitize_string(word),current_room_exits)):
 		return user_input_exit
+	directions_abbr = {"ne": "northeast", "nw": "northwest", "se": "southeast", "sw": "southwest"}
+	if user_input_exit in directions_abbr:
+		user_input_exit = directions_abbr[user_input_exit]
+	if user_input_exit in list(map(lambda word: sanitize_string(word),current_room_exits)):
+		return user_input_exit
 	filtered_exits = list(filter(lambda word: sanitize_string(word).startswith(user_input_exit), current_room_exits))
 	if len(filtered_exits) == 1:
 		return filtered_exits[0]
@@ -26,9 +31,6 @@ def execute_go(user_input, world_state):
 	
 	user_input_exit = user_input[1]
 	current_room_exits = world_state.room_map[world_state.current_room_index]["exits"]
-	directions_abbr = {"ne": "northeast", "nw": "northwest", "se": "southeast", "sw": "southwest"}
-	if user_input_exit in directions_abbr:
-		user_input_exit = directions_abbr[user_input_exit]
 	
 	matched_exit = get_matched_exit(user_input_exit, current_room_exits)
 	if matched_exit == 0:
