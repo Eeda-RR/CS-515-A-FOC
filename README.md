@@ -7,7 +7,7 @@
   - https://github.com/Eeda-RR/CS-515-A-FOC
 
 ## Estimate of how many hours you spent on the project
-  - Around 30 hours spread across 4 days
+  - Around 15 hours spread across 4 days
 
 ## Description of how you tested your code
   - Firstly implemented the programming logic for individual parts of assignment 
