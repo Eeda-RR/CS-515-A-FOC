@@ -31,9 +31,6 @@ def main():
                 is_game_quit = True
         except EOFError:
             print("\nUse 'quit' to exit.")
-        except:
-            print("Traceback (most recent call last): \n  ... \nKeyboardInterrupt")
-            is_game_quit = True
 
 
 if __name__=="__main__":
