@@ -8,7 +8,7 @@ def get_matched_exit(user_input_exit, current_room_exits):
 	if len(filtered_exits) == 1:
 		return filtered_exits[0]
 	elif len(filtered_exits) > 1:
-		output_str = "Did you want to go "
+		output_str = "Did you want to go"
 		for i in range(0,len(filtered_exits),1):
 			if i != 0:
 				output_str += " or"
