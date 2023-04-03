@@ -44,4 +44,5 @@
   - A drop verb
   - Directions become verbs 
   
-  
+## Custom map file
+adventure_map.map
